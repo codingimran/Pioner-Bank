@@ -31,6 +31,7 @@ btnDeposit.addEventListener("click", function () {
   const updatedCurrentBalance = fCurrentBalance + totalDeposit;
   document.getElementById("current-balance").innerText = updatedCurrentBalance;
 });
+imran;
 
 //withdraw btn event handler
 const btnWithdraw = document.getElementById("btn-withdraw");

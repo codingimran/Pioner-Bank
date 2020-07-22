@@ -1,0 +1,16 @@
+.login-area > h1 {
+  margin: 100px 0 60px 0;
+  font-size: 45px;
+}
+
+.sumbit-area {
+  padding: 50px;
+  margin: 40px;
+  box-shadow: 5px 5px 10px gray;
+}
+
+.sumbit-area h4,
+.sumbit-area #email,
+.sumbit-area #password {
+  margin-bottom: 10px;
+}

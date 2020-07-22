@@ -1,5 +1,6 @@
-.login-area > h1 {
-  margin: 100px 0 60px 0;
+#login-area h1,
+#transaction-area {
+  margin: 120px 0 80px 0;
   font-size: 45px;
 }
 
@@ -14,3 +15,42 @@
 .sumbit-area #password {
   margin-bottom: 10px;
 }
+
+.deposit-balance,
+.withdraw-balance,
+.main-balance {
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 10px;
+  color: white;
+}
+
+.deposit-balance {
+  background-color: slateblue;
+}
+.withdraw-balance {
+  background-color: lightsalmon;
+}
+.main-balance {
+  background-color: orange;
+}
+
+/* Transaction area start */
+#transaction-area {
+  display: none;
+}
+
+.deposit-area,
+.withdraw-area {
+  margin-top: 50px;
+  box-shadow: 5px 5px 8px gray;
+  padding: 20px;
+  border: 1px solid rgba(128, 128, 128, 0.13);
+  border-radius: 10px;
+}
+
+.deposit-area h5 + input,
+.withdraw-area h5 + input {
+  margin-bottom: 10px;
+}
+/* Transaction area end */

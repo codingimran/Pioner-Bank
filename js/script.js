@@ -2,7 +2,7 @@ const loginBtn = document.getElementById("loginBtn");
 loginBtn.addEventListener("click", function () {
   const email = document.getElementById("email").value;
   const pass = document.getElementById("password").value;
-  if (email === "" && pass === "") {
+  if (email === "imran" && pass === "imran") {
     document.getElementById("login-area").style.display = "none";
     document.getElementById("transaction-area").style.display = "block";
   } else {

@@ -2,7 +2,7 @@ const loginBtn = document.getElementById("loginBtn");
 loginBtn.addEventListener("click", function () {
   const email = document.getElementById("email").value;
   const pass = document.getElementById("password").value;
-  if (email === "imran" && pass === "imran") {
+  if (email === "" && pass === "") {
     document.getElementById("login-area").style.display = "none";
     document.getElementById("transaction-area").style.display = "block";
   } else {
@@ -32,12 +32,12 @@ btnWithdraw.addEventListener("click", function () {
   const currentBalanceV = document.getElementById("current-balance").innerText;
   const currentBalanceVa = parseFloat(currentBalanceV);
   if (withdrawInputValue < 0 || withdrawInputValue == "") {
-    alert("Invalid Ammount");
+    alert("Invalid Amount");
   } else if (currentBalanceVa < withdrawInputValue) {
     alert("Insufficient Balance");
   } else {
     spanTextUpdater("current-withdraw", withdrawInputValue);
-    spanTextUpdaterWithdraw("current-balance", withdrawInputValue);
+    spanTextUpdater("current-balance", -1 * withdrawInputValue);
   }
 });
 
@@ -54,13 +54,5 @@ function spanTextUpdater(id, inputValueVariable) {
   const Current = document.getElementById(id).innerText;
   const CurrentValue = parseFloat(Current);
   const Total = inputValueVariable + CurrentValue;
-  document.getElementById(id).innerText = Total;
-}
-
-//withdraw span text updater
-function spanTextUpdaterWithdraw(id, inputValueVariable) {
-  const Current = document.getElementById(id).innerText;
-  const CurrentValue = parseFloat(Current);
-  const Total = CurrentValue - inputValueVariable;
   document.getElementById(id).innerText = Total;
 }

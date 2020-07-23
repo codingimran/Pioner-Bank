@@ -28,6 +28,7 @@ btnDeposit.addEventListener("click", function () {
 const btnWithdraw = document.getElementById("btn-withdraw");
 btnWithdraw.addEventListener("click", function () {
   const withdrawInputValue = getInputNum("amount-withdraw");
+  //input check alert added
   const currentBalanceV = document.getElementById("current-balance").innerText;
   const currentBalanceVa = parseFloat(currentBalanceV);
   if (withdrawInputValue < 0 || withdrawInputValue == "") {

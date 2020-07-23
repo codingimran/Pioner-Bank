@@ -11,50 +11,44 @@ loginBtn.addEventListener("click", function () {
     );
   }
 });
-document.getElementsByClassName;
 
-//deposit btn event handler
+// deposit btn event handler
 const btnDeposit = document.getElementById("btn-deposit");
-
 btnDeposit.addEventListener("click", function () {
-  const depositInputValue = document.getElementById("amount-deposit").value;
-  const DIValue = parseFloat(depositInputValue);
-  const CdepositMoney = document.getElementById("current-deposit").innerText;
-  const CdepositAmount = parseFloat(CdepositMoney);
-  const totalDeposit = DIValue + CdepositAmount;
-  //deposit total amount updated
-  document.getElementById("current-deposit").innerText = totalDeposit;
-  //update current balance with total deposit amount
-  const currentBalance = document.getElementById("current-balance").innerText;
-  //converted string to float
-  const fCurrentBalance = parseFloat(currentBalance);
-  const updatedCurrentBalance = fCurrentBalance + totalDeposit;
-  document.getElementById("current-balance").innerText = updatedCurrentBalance;
+  const depositInputValue = getInputNum("amount-deposit");
+  spanTextUpdater("current-deposit", depositInputValue);
+  spanTextUpdater("current-balance", depositInputValue);
 });
-imran;
 
-//withdraw btn event handler
+// withdraw btn event handler
 const btnWithdraw = document.getElementById("btn-withdraw");
-
 btnWithdraw.addEventListener("click", function () {
-  const withdrawInput = document.getElementById("amount-withdraw").value;
-  const withdrawInputValue = parseFloat(withdrawInput);
-  const currentWithdraw = document.getElementById("current-withdraw").innerText;
-  const currentWithdrawValue = parseFloat(currentWithdraw);
-  const withdrawTotalValue = withdrawInputValue + currentWithdrawValue;
-  document.getElementById("current-withdraw").innerText = withdrawTotalValue;
-  // updating main balance
-  const currentBalance = document.getElementById("current-balance").innerText;
-  const currentBalanceValue = parseFloat(currentBalance);
-  // const updatedCurrentBalance = currentBalanceValue - withdrawTotalValue;
-  if (currentBalanceValue <= 0) {
-    alert("Insufficient Balance");
-  } else if (currentBalance < withdrawTotalValue) {
-    alert("Insufficient Balance");
-  } else {
-    const updatedCurrentBalance = currentBalanceValue - withdrawTotalValue;
-    document.getElementById(
-      "current-balance"
-    ).innerText = updatedCurrentBalance;
-  }
+  const withdrawInputValue = getInputNum("amount-withdraw");
+  spanTextUpdater("current-withdraw", withdrawInputValue);
+  spanTextUpdaterWithdraw("current-balance", withdrawInputValue);
 });
+
+//get input number;
+function getInputNum(id) {
+  const Input = document.getElementById(id).value;
+  const InputValue = parseFloat(Input);
+  document.getElementById(id).value = 0;
+  return InputValue;
+}
+
+//span tag text updater function
+function spanTextUpdater(id, inputValueVariable) {
+  const Current = document.getElementById(id).innerText;
+  const CurrentValue = parseFloat(Current);
+  const Total = inputValueVariable + CurrentValue;
+  document.getElementById(id).innerText = Total;
+}
+
+//withdraw span text updater
+function spanTextUpdaterWithdraw(id, inputValueVariable) {
+  const Current = document.getElementById(id).innerText;
+  const CurrentValue = parseFloat(Current);
+  const Total = CurrentValue - inputValueVariable;
+  console.log(Total);
+  document.getElementById(id).innerText = Total;
+}

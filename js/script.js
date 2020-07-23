@@ -2,7 +2,7 @@ const loginBtn = document.getElementById("loginBtn");
 loginBtn.addEventListener("click", function () {
   const email = document.getElementById("email").value;
   const pass = document.getElementById("password").value;
-  if (email === "imran" && pass === "imran") {
+  if (email === "" && pass === "") {
     document.getElementById("login-area").style.display = "none";
     document.getElementById("transaction-area").style.display = "block";
   } else {
@@ -11,6 +11,10 @@ loginBtn.addEventListener("click", function () {
     );
   }
 });
+
+//input value default added
+document.getElementById("amount-deposit").value = 0;
+document.getElementById("amount-withdraw").value = 0;
 
 // deposit btn event handler
 const btnDeposit = document.getElementById("btn-deposit");
@@ -24,8 +28,16 @@ btnDeposit.addEventListener("click", function () {
 const btnWithdraw = document.getElementById("btn-withdraw");
 btnWithdraw.addEventListener("click", function () {
   const withdrawInputValue = getInputNum("amount-withdraw");
-  spanTextUpdater("current-withdraw", withdrawInputValue);
-  spanTextUpdaterWithdraw("current-balance", withdrawInputValue);
+  const currentBalanceV = document.getElementById("current-balance").innerText;
+  const currentBalanceVa = parseFloat(currentBalanceV);
+  if (withdrawInputValue < 0 || withdrawInputValue == "") {
+    alert("Invalid Ammount");
+  } else if (currentBalanceVa < withdrawInputValue) {
+    alert("Insufficient Balance");
+  } else {
+    spanTextUpdater("current-withdraw", withdrawInputValue);
+    spanTextUpdaterWithdraw("current-balance", withdrawInputValue);
+  }
 });
 
 //get input number;
@@ -49,6 +61,5 @@ function spanTextUpdaterWithdraw(id, inputValueVariable) {
   const Current = document.getElementById(id).innerText;
   const CurrentValue = parseFloat(Current);
   const Total = CurrentValue - inputValueVariable;
-  console.log(Total);
   document.getElementById(id).innerText = Total;
 }
